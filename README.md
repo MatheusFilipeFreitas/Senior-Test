@@ -58,10 +58,12 @@ For testing the application is necessary to download [Postman](https://www.postm
       - url: [/client/all](https://localhost:8080/client/all)
       return: Object object (JSON Response)
       ```sh
-      {
-       "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
-       "name": "Emilly"
-      }
+       [
+        {
+         "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+         "name": "Emilly"
+        }
+       ]
       ```
      - **Insert Method**
        - `post`
@@ -182,6 +184,90 @@ For testing the application is necessary to download [Postman](https://www.postm
       - `get`
       - url: [/inventory/all](https://localhost:8080/inventory/all)
       return: Object object (JSON Response)
+      OBS: `"product": {}` is an object from Entity Product (used foreign key).
+      ```sh
+      [
+         {
+           "id": "361ad155-7362-4b27-8eb2-13c44433a2c2",
+           "quantity": 100,
+           "value": 1035090.0,
+           "product": {
+             "id": "146ce2f2-3af9-48af-a31b-dde0bc5b0ac4",
+             "name": "iPhone 13 PRO Max",
+             "description": "Lançamento: 2021",
+             "value": 10350.9,
+             "type": "p"
+            }
+         }
+      ]
+      ```
+     - **Insert Method**
+       - `post`
+       - url: [/inventory/add](https://localhost:8080/inventory/add)
+       input: JSON
+       ```sh
+         {
+             "quantity": 5,
+             "productID": "f3cbef22-107e-4d13-86b1-44af45c04023"
+          }
+       ```
+       return: Object object (JSON Response)
+     ```sh
+        {
+           "id": "77e914a4-db7f-4f26-bdb4-ed05c65c4168",
+           "quantity": 5,
+           "value": 9150.5,
+           "product": {
+              "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
+              "name": "Microsolda",
+              "description": "Lab",
+              "value": 1830.1,
+              "type": "s"
+            }
+        }
+     ```
+       
+     - **Update Method**
+       - `put`
+       - url: [/inventory/update/{id}](https://localhost:8080/product/inventory/{id}) (where {id}, put your `inventory id`)
+       input: JSON
+       ```sh
+         {
+             "quantity": 5,
+             "productID": "f3cbef22-107e-4d13-86b1-44af45c04023"
+          }
+       ```
+     
+       return: Object object (JSON Response)
+       
+     ```sh
+        {
+           "id": "77e914a4-db7f-4f26-bdb4-ed05c65c4168",
+           "quantity": 5,
+           "value": 9150.5,
+           "product": {
+              "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
+              "name": "Microsolda",
+              "description": "Lab",
+              "value": 1830.1,
+              "type": "s"
+            }
+        }
+     ```
+     
+      - **Delete Method**
+        - `delete`
+        - url: [/inventory/delete/{id}](https://localhost:8080/inventory/delete/{id}) (where {id}, put your `inventory id`)
+
+  return: void (JSON Response)
+     
+     
+  #### Order
+ - URL: [/Order](https://localhost:8080/order)
+    - **List All Method**
+      - `get`
+      - url: [/order/all](https://localhost:8080/order/all)
+      return: Object object (JSON Response)
       ```sh
       [
         {
@@ -195,7 +281,7 @@ For testing the application is necessary to download [Postman](https://www.postm
       ```
      - **Insert Method**
        - `post`
-       - url: [/inventory/add](https://localhost:8080/inventory/add)
+       - url: [/order/add](https://localhost:8080/order/add)
        input: JSON
        ```sh
         {
@@ -218,7 +304,7 @@ For testing the application is necessary to download [Postman](https://www.postm
        
      - **Update Method**
        - `put`
-       - url: [/inventory/update/{id}](https://localhost:8080/product/inventory/{id}) (where {id}, put your `inventory id`)
+       - url: [/order/update/{id}](https://localhost:8080/order/inventory/{id}) (where {id}, put your `order id`)
        input: JSON
        ```sh
          {
@@ -243,7 +329,7 @@ For testing the application is necessary to download [Postman](https://www.postm
      
       - **Delete Method**
         - `delete`
-        - url: [/inventory/delete/{id}](https://localhost:8080/inventory/delete/{id}) (where {id}, put your `inventory id`)
+        - url: [/order/delete/{id}](https://localhost:8080/order/delete/{id}) (where {id}, put your `order id`)
 
   return: void (JSON Response)
      
