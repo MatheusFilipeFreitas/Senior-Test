@@ -8,7 +8,7 @@
  - Entities
  - Returns
  
- ### Overview
+ ## Overview
  
 This API is used for creating simple clients, simple orders, simple products, simple orders inventory.
 The code above is only for study purpose.
@@ -24,7 +24,7 @@ um serviço.
 itens que sejam produto (não serviço); o desconto será sobre o valor total dos produtos.
 
  
- ### Technologies used
+ ## Technologies used
  
 - PostgreSQL Database
 - Java 8+
@@ -33,7 +33,7 @@ itens que sejam produto (não serviço); o desconto será sobre o valor total do
 - JPA
 - REST with JSON
 
-### Installing
+## Installing
 
 The project was created and tested using [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/) (Build #IU-212.5284.40, built on September 14, 2022).
 The database used was created using Postgree [pgAdmin4](https://www.postgresql.org/download/) (Build 6.4).
@@ -49,9 +49,9 @@ For testing the application is necessary to download [Postman](https://www.postm
 | Order | `GET`, `POST`, `PUT`, `DELETE` |
 
 
-### Returns
+## Returns
 
-#### Client
+### Client
  - URL: [/client](https://localhost:8080/client)
     - **List All Method**
       - `get`
@@ -106,7 +106,7 @@ For testing the application is necessary to download [Postman](https://www.postm
 
   return: void (JSON Response)
        
- #### Product
+ ### Product
  - URL: [/product](https://localhost:8080/product)
     - **List All Method**
       - `get`
@@ -178,13 +178,12 @@ For testing the application is necessary to download [Postman](https://www.postm
   return: void (JSON Response)
        
  
- #### Order Inventory
+ ### Order Inventory
  - URL: [/inventory](https://localhost:8080/inventory)
     - **List All Method**
       - `get`
       - url: [/inventory/all](https://localhost:8080/inventory/all)
       return: Object object (JSON Response)
-      OBS: `"product": {}` is an object from Entity Product (used foreign key).
       ```sh
       [
          {
@@ -262,21 +261,38 @@ For testing the application is necessary to download [Postman](https://www.postm
   return: void (JSON Response)
      
      
-  #### Order
+  ### Order
  - URL: [/Order](https://localhost:8080/order)
     - **List All Method**
       - `get`
       - url: [/order/all](https://localhost:8080/order/all)
       return: Object object (JSON Response)
       ```sh
-      [
-        {
-          "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
-          "name": "Microsolda",
-          "description": "Lab",
-          "value": 1830.1,
-          "type": "s"
-        }
+       [
+         {
+            "id": "e7a908a3-867a-4696-b256-13d7e06cc28f",
+            "date": "2022-04-22",
+            "term": "2022-05-23",
+            "status": "c",
+            "quantity": 5,
+            "value": 9150.5,
+            "discount": 0.0,
+            "client": {
+                "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+                "name": "Emilly"
+            },
+            "orderInventory": {
+            "id": "d99780a1-076b-478a-ba03-6e2ea8e8c3c8",
+            "quantity": 5,
+            "value": 9150.5,
+            "product": {
+                "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
+                "name": "Microsolda",
+                "description": "Lab",
+                "value": 1830.1,
+                "type": "s"
+            }
+         }
       ]
       ```
      - **Insert Method**
@@ -285,21 +301,40 @@ For testing the application is necessary to download [Postman](https://www.postm
        input: JSON
        ```sh
         {
-           "name": "iPhone 12",
-           "description": "Lançamento: 2020",
-           "value": 6390.90,
-           "type": "p"
-         }
+           "date": "2022-05-22",
+           "status": "o",
+           "term": "2022-08-31",
+           "clientID": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+           "discount": 10,
+           "orderInventoryID": "d99780a1-076b-478a-ba03-6e2ea8e8c3c8"
+        }
        ```
        return: Object object (JSON Response)
      ```sh
-       {
-         "id": "969240d8-f2fa-4ba0-99c6-e7d243a5ef39",
-         "name": "iPhone 12",
-         "description": "Lançamento: 2020",
-         "value": 6390.9,
-         "type": "p"
-       }
+        {
+            "id": "b1872c48-9dff-4914-a97b-29f4e911866f",
+            "date": "2022-04-22",
+            "term": "2022-05-23",
+            "status": "o",
+            "quantity": 5,
+            "value": 9150.5,
+            "discount": 10.0,
+            "client": {
+                "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+                "name": "Emilly"
+            },
+            "orderInventory": {
+            "id": "d99780a1-076b-478a-ba03-6e2ea8e8c3c8",
+            "quantity": 5,
+            "value": 9150.5,
+            "product": {
+                "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
+                "name": "Microsolda",
+                "description": "Lab",
+                "value": 1830.1,
+                "type": "s"
+            }
+         }
      ```
        
      - **Update Method**
@@ -307,25 +342,43 @@ For testing the application is necessary to download [Postman](https://www.postm
        - url: [/order/update/{id}](https://localhost:8080/order/inventory/{id}) (where {id}, put your `order id`)
        input: JSON
        ```sh
-         {
-           "name": "iPhone 12",
-           "description": "Lançamento: 2020",
-           "value": 6390.90,
-           "type": "p"
-         }
+        {
+           "date": "2022-05-22",
+           "status": "o",
+           "term": "2022-08-31",
+           "clientID": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+           "discount": 10,
+           "orderInventoryID": "d99780a1-076b-478a-ba03-6e2ea8e8c3c8"
+        }
        ```
-     
        return: Object object (JSON Response)
        
-       ```sh
-         {
-           "id": "969240d8-f2fa-4ba0-99c6-e7d243a5ef39",
-           "name": "iPhone 12",
-           "description": "Lançamento: 2020",
-           "value": 6390.9,
-           "type": "p"
+     ```sh
+        {
+            "id": "b1872c48-9dff-4914-a97b-29f4e911866f",
+            "date": "2022-04-22",
+            "term": "2022-05-23",
+            "status": "o",
+            "quantity": 5,
+            "value": 9150.5,
+            "discount": 10.0,
+            "client": {
+                "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+                "name": "Emilly"
+            },
+            "orderInventory": {
+            "id": "d99780a1-076b-478a-ba03-6e2ea8e8c3c8",
+            "quantity": 5,
+            "value": 9150.5,
+            "product": {
+                "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
+                "name": "Microsolda",
+                "description": "Lab",
+                "value": 1830.1,
+                "type": "s"
+            }
          }
-       ```
+     ```
      
       - **Delete Method**
         - `delete`
