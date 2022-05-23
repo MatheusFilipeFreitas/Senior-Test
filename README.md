@@ -41,10 +41,12 @@ For testing the application is necessary to download [Postman](https://www.postm
 
 ### Entities
 
-- Client: `get`,`post`,`put`,`delete`;
-- Product: `get`,`post`,`put`,`delete`;
-- Order Inventory: `get`,`post`,`put`,`delete`;
-- Order: `get`,`post`,`put`,`delete`;
+| Entity | METHOD |
+| ------ | ------ |
+| Client | `GET`, `POST`, `PUT`, `DELETE` |
+| Product | `GET`, `POST`, `PUT`, `DELETE` |
+| Order Inventory | `GET`, `POST`, `PUT`, `DELETE` |
+| Order | `GET`, `POST`, `PUT`, `DELETE` |
 
 
 ### Returns
@@ -52,60 +54,197 @@ For testing the application is necessary to download [Postman](https://www.postm
 #### Client
  - URL: [/client](https://localhost:8080/client)
     - **List All Method**
-     - `get`
-     - url: [/client/all](https://localhost:8080/client/all)
-     - return: Object object (JSON Response)
-     ```
-     {
-        "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
-        "name": "Emilly"
-    }
-     ```
+      - `get`
+      - url: [/client/all](https://localhost:8080/client/all)
+      return: Object object (JSON Response)
+      ```sh
+      {
+       "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+       "name": "Emilly"
+      }
+      ```
      - **Insert Method**
-     - `post`
-     - url: [/client/add](https://localhost:8080/client/add)
-     - input: JSON
-     ```
+       - `post`
+       - url: [/client/add](https://localhost:8080/client/add)
+       input: JSON
+       ```sh
+        {
+          "name": "Emilly"
+        }
+       ```
+       return: Object object (JSON Response)
+     ```sh
       {
-        "name": "Emilly"
-      }
+         "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+         "name": "Emilly"
+       }
      ```
-     - return: Object object (JSON Response)
-     ```
-     {
-        "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
-        "name": "Emilly"
-     }
-     ```
+       
      - **Update Method**
-     - `put`
-     - url: [/client/update/{id}](https://localhost:8080/client/update/{id}) (where {id}, put your `client id`)
-     - input: JSON
+       - `put`
+       - url: [/client/update/{id}](https://localhost:8080/client/update/{id}) (where {id}, put your `client id`)
+       input: JSON
+       ```sh
+        {
+          "name": "Emilly"
+        }
+       ```
+     
+       return: Object object (JSON Response)
+       
+       ```sh
+       {
+          "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
+          "name": "Emilly"
+       }
+       ```
+      - **Delete Method**
+        - `delete`
+        - url: [/client/delete/{id}](https://localhost:8080/client/delete/{id}) (where {id}, put your `client id`)
+
+  return: void (JSON Response)
+       
+ #### Product
+ - URL: [/product](https://localhost:8080/product)
+    - **List All Method**
+      - `get`
+      - url: [/product/all](https://localhost:8080/product/all)
+      return: Object object (JSON Response)
+      ```sh
+      [
+        {
+          "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
+          "name": "Microsolda",
+          "description": "Lab",
+          "value": 1830.1,
+          "type": "s"
+        }
+      ]
+      ```
+     - **Insert Method**
+       - `post`
+       - url: [/product/add](https://localhost:8080/product/add)
+       input: JSON
+       ```sh
+        {
+           "name": "iPhone 12",
+           "description": "Lançamento: 2020",
+           "value": 6390.90,
+           "type": "p"
+         }
+       ```
+       return: Object object (JSON Response)
+     ```sh
+       {
+         "id": "969240d8-f2fa-4ba0-99c6-e7d243a5ef39",
+         "name": "iPhone 12",
+         "description": "Lançamento: 2020",
+         "value": 6390.9,
+         "type": "p"
+       }
      ```
-      {
-        "name": "Emilly"
-      }
+       
+     - **Update Method**
+       - `put`
+       - url: [/product/update/{id}](https://localhost:8080/product/update/{id}) (where {id}, put your `product id`)
+       input: JSON
+       ```sh
+         {
+           "name": "iPhone 12",
+           "description": "Lançamento: 2020",
+           "value": 6390.90,
+           "type": "p"
+         }
+       ```
+     
+       return: Object object (JSON Response)
+       
+       ```sh
+         {
+           "id": "969240d8-f2fa-4ba0-99c6-e7d243a5ef39",
+           "name": "iPhone 12",
+           "description": "Lançamento: 2020",
+           "value": 6390.9,
+           "type": "p"
+         }
+       ```
+     
+      - **Delete Method**
+        - `delete`
+        - url: [/product/delete/{id}](https://localhost:8080/product/delete/{id}) (where {id}, put your `product id`)
+
+  return: void (JSON Response)
+       
+ 
+ #### Order Inventory
+ - URL: [/inventory](https://localhost:8080/inventory)
+    - **List All Method**
+      - `get`
+      - url: [/inventory/all](https://localhost:8080/inventory/all)
+      return: Object object (JSON Response)
+      ```sh
+      [
+        {
+          "id": "f3cbef22-107e-4d13-86b1-44af45c04023",
+          "name": "Microsolda",
+          "description": "Lab",
+          "value": 1830.1,
+          "type": "s"
+        }
+      ]
+      ```
+     - **Insert Method**
+       - `post`
+       - url: [/inventory/add](https://localhost:8080/inventory/add)
+       input: JSON
+       ```sh
+        {
+           "name": "iPhone 12",
+           "description": "Lançamento: 2020",
+           "value": 6390.90,
+           "type": "p"
+         }
+       ```
+       return: Object object (JSON Response)
+     ```sh
+       {
+         "id": "969240d8-f2fa-4ba0-99c6-e7d243a5ef39",
+         "name": "iPhone 12",
+         "description": "Lançamento: 2020",
+         "value": 6390.9,
+         "type": "p"
+       }
      ```
-     - return: Object object (JSON Response)
-     ```
-     {
-        "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
-        "name": "Emilly"
-     }
-     ```
-      - **Update Method**
-     - `put`
-     - url: [/client/update/{id}](https://localhost:8080/client/update/{id}) (where {id}, put your `client id`)
-     - input: JSON
-     ```
-      {
-        "name": "Emilly"
-      }
-     ```
-     - return: Object object (JSON Response)
-     ```
-     {
-        "id": "a199e03b-36f2-4acd-8a3c-62b90a3688fd",
-        "name": "Emilly"
-     }
-     ```
+       
+     - **Update Method**
+       - `put`
+       - url: [/inventory/update/{id}](https://localhost:8080/product/inventory/{id}) (where {id}, put your `inventory id`)
+       input: JSON
+       ```sh
+         {
+           "name": "iPhone 12",
+           "description": "Lançamento: 2020",
+           "value": 6390.90,
+           "type": "p"
+         }
+       ```
+     
+       return: Object object (JSON Response)
+       
+       ```sh
+         {
+           "id": "969240d8-f2fa-4ba0-99c6-e7d243a5ef39",
+           "name": "iPhone 12",
+           "description": "Lançamento: 2020",
+           "value": 6390.9,
+           "type": "p"
+         }
+       ```
+     
+      - **Delete Method**
+        - `delete`
+        - url: [/inventory/delete/{id}](https://localhost:8080/inventory/delete/{id}) (where {id}, put your `inventory id`)
+
+  return: void (JSON Response)
+     
+
