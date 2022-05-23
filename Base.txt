@@ -1,0 +1,21 @@
+Client:
+	-Name:OK
+
+Order:
+	-Date:OK
+	-Term:(Check the Inventory Term)
+	-Status:OK
+	-Quantity:(count Inventories Quantities)
+	-Value:(count Inventorories values)
+	-Discount:OK
+
+OrderInventory
+	-Term:OK
+	-Quantity:OK
+	-Value:(count Products value with quanitity)
+
+Product
+	-Name:OK
+	-Description:OK
+	-Value:OK
+	-Type:OK
