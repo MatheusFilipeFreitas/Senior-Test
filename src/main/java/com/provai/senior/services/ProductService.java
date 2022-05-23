@@ -27,7 +27,6 @@ public class ProductService {
     public Product insert(ProductDto productDto){
         Product product = ProductMapper.mapProduct(productDto);
         if(product.getType() != 'p' && product.getType() != 's'){
-            //Error: Message type!
             product.setType(null);
         }
         return repository.save(product);
@@ -38,7 +37,7 @@ public class ProductService {
         overrideProduct.setName(productDto.getName());
         overrideProduct.setDescription(productDto.getDescription());
         overrideProduct.setValue(productDto.getValue());
-        if(overrideProduct.getType() == 'p' || overrideProduct.getType() == 's') {
+        if(productDto.getType() == 'p' || productDto.getType() == 's') {
             overrideProduct.setType(productDto.getType());
         }
         return repository.save(overrideProduct);

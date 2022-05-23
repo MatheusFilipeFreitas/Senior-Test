@@ -66,7 +66,6 @@ public class OrderService {
         order.setClient(client);
     }
 
-    //TODO: Create method for sum the quantity
     public void calcQuantity(Order order, UUID orderInventoryID){
         OrderInventory orderInventory = orderInventoryService.findByID(orderInventoryID);
         order.setQuantity(orderInventory.getQuantity());
