@@ -52,6 +52,7 @@ For testing the application is necessary to download [Postman](https://www.postm
 ## Returns
 
 ### Client
+#### OBS: For testing you can take the url just by pressing the right button above the hyperlink and pressing "copy url link" (Search for -url:)
  - URL: [/client](https://localhost:8080/client)
     - **List All Method**
       - `get`
@@ -184,6 +185,7 @@ For testing the application is necessary to download [Postman](https://www.postm
       - `get`
       - url: [/inventory/all](https://localhost:8080/inventory/all)
       return: Object object (JSON Response)
+      #### OBS: In this case `"product":{}` is the product entity! 
       ```sh
       [
          {
@@ -204,6 +206,7 @@ For testing the application is necessary to download [Postman](https://www.postm
        - `post`
        - url: [/inventory/add](https://localhost:8080/inventory/add)
        input: JSON
+       #### OBS: The `"value":` is calculated automatically, so there is no need to send this atribute into your JSON.
        ```sh
          {
              "quantity": 5,
@@ -211,6 +214,7 @@ For testing the application is necessary to download [Postman](https://www.postm
           }
        ```
        return: Object object (JSON Response)
+       #### OBS: In this case `"product":{}` is the product entity! 
      ```sh
         {
            "id": "77e914a4-db7f-4f26-bdb4-ed05c65c4168",
@@ -230,15 +234,15 @@ For testing the application is necessary to download [Postman](https://www.postm
        - `put`
        - url: [/inventory/update/{id}](https://localhost:8080/product/inventory/{id}) (where {id}, put your `inventory id`)
        input: JSON
+       #### OBS: The `"value":` is calculated automatically, so there is no need to send this atribute into your JSON.
        ```sh
          {
              "quantity": 5,
              "productID": "f3cbef22-107e-4d13-86b1-44af45c04023"
           }
        ```
-     
        return: Object object (JSON Response)
-       
+       #### OBS: In this case `"product":{}` is the product entity! 
      ```sh
         {
            "id": "77e914a4-db7f-4f26-bdb4-ed05c65c4168",
@@ -267,6 +271,7 @@ For testing the application is necessary to download [Postman](https://www.postm
       - `get`
       - url: [/order/all](https://localhost:8080/order/all)
       return: Object object (JSON Response)
+      #### OBS: In this case `"client":{}` is the client entity, `"orderInventory":{}` is the order inventory entity, `"product":{}` is the product entity! 
       ```sh
        [
          {
@@ -299,6 +304,7 @@ For testing the application is necessary to download [Postman](https://www.postm
        - `post`
        - url: [/order/add](https://localhost:8080/order/add)
        input: JSON
+       #### OBS: The `"value":` and `"quantity"` is calculated automatically, so there is no need to send these atributes into your JSON.
        ```sh
         {
            "date": "2022-05-22",
@@ -310,6 +316,7 @@ For testing the application is necessary to download [Postman](https://www.postm
         }
        ```
        return: Object object (JSON Response)
+       #### OBS: In this case `"client":{}` is the client entity, `"orderInventory":{}` is the order inventory entity, `"product":{}` is the product entity! 
      ```sh
         {
             "id": "b1872c48-9dff-4914-a97b-29f4e911866f",
@@ -341,6 +348,7 @@ For testing the application is necessary to download [Postman](https://www.postm
        - `put`
        - url: [/order/update/{id}](https://localhost:8080/order/inventory/{id}) (where {id}, put your `order id`)
        input: JSON
+       #### OBS: The `"value":` and `"quantity"` is calculated automatically, so there is no need to send these atributes into your JSON.
        ```sh
         {
            "date": "2022-05-22",
@@ -352,6 +360,7 @@ For testing the application is necessary to download [Postman](https://www.postm
         }
        ```
        return: Object object (JSON Response)
+       #### OBS: In this case `"client":{}` is the client entity, `"orderInventory":{}` is the order inventory entity, `"product":{}` is the product entity! 
        
      ```sh
         {
